@@ -1,10 +1,11 @@
 package calculator.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Delimiter {
 
-    private static List<String> delimiters = List.of(",", ":");
+    private static List<String> delimiters = new ArrayList<>(List.of(",", ":"));
 
     private static final String START_CUSTOM_DELIMITER = "//";
     private static final String END_CUSTOM_DELIMITER = "\\n";
@@ -69,12 +70,13 @@ public class Delimiter {
 
         int idx = 0;
         for (String delimiter : delimiters) {
-            if (idx == delimiters.size() - 1) {
+            if (idx < delimiters.size() - 1) {
                 sb.append(delimiter);
+                return sb.toString();
             }
             sb.append(delimiter).append("|");
             idx++;
         }
-        return sb.toString();
+        return null;
     }
 }

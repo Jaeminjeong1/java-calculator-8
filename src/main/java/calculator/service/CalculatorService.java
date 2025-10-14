@@ -7,8 +7,8 @@ import java.util.List;
 
 public class CalculatorService {
 
-    private Delimiter delimiter = new Delimiter();
-    private Calculator calculator = new Calculator();
+    private final Delimiter delimiter = new Delimiter();
+    private final Calculator calculator = new Calculator();
 
     public List<String> findNumbers(String userInput) {
         String customDelimiter = delimiter.findCustomDelimiter(userInput);

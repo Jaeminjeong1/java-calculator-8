@@ -8,12 +8,13 @@ import java.util.List;
 
 public class CalculatorController {
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private CalculatorService calculatorService = new CalculatorService();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final CalculatorService calculatorService = new CalculatorService();
 
     public void start() {
         String userInput = inputView.getStartInput();
+        System.out.println(1);
         List<String> strings = calculatorService.findNumbers(userInput);
         Object result = calculatorService.calculateResult(strings);
         outputView.printResult(result);
