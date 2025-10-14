@@ -3,6 +3,8 @@ package calculator.controller;
 import calculator.service.CalculatorService;
 import calculator.view.InputView;
 
+import java.util.List;
+
 public class CalculatorController {
 
     private InputView inputView = new InputView();
@@ -10,6 +12,6 @@ public class CalculatorController {
 
     public void start() {
         String userInput = inputView.getStartInput();
-
+        List<String> numbers = calculatorService.findNumbers(userInput);
     }
 }

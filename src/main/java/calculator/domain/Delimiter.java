@@ -24,6 +24,7 @@ public class Delimiter {
 
             //커스텀 구분자 "."이랑 숫자로 들어오면 안됨
             validateCustomDelimiter(customDelimiter);
+
             delimiters.add(customDelimiter);
 
             return customDelimiter;
