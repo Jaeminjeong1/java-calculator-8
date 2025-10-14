@@ -12,6 +12,7 @@ public class CalculatorController {
 
     public void start() {
         String userInput = inputView.getStartInput();
-        List<String> numbers = calculatorService.findNumbers(userInput);
+        List<String> strings = calculatorService.findNumbers(userInput);
+        Object result = calculatorService.calculateResult(strings);
     }
 }
