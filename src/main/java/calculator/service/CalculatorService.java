@@ -1,8 +1,7 @@
 package calculator.service;
 
-import calculator.domain.Delimiter;
+import calculator.utils.Delimiter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorService {
