@@ -14,6 +14,13 @@ public class Calculator {
         return result;
     }
 
+    public Object determineType(double number) {
+        if (number % 1 == 0) {
+            return (long) number;
+        }
+        return number;
+    }
+
     //숫자 검증
     private void validateNum(String number) {
         try {
