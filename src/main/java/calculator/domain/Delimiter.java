@@ -14,10 +14,7 @@ public class Delimiter {
     public String findCustomDelimiter(String userInput) {
 
         //커스텀 구분자 입력구조가 틀린경우 예외
-        if ((userInput.startsWith(START_CUSTOM_DELIMITER) && !userInput.contains(END_CUSTOM_DELIMITER))
-        || (!userInput.startsWith(START_CUSTOM_DELIMITER) && userInput.contains(END_CUSTOM_DELIMITER))) {
-            throw new IllegalArgumentException();
-        }
+        validateInputFormat(userInput);
 
         if (userInput.startsWith(START_CUSTOM_DELIMITER) && userInput.contains(END_CUSTOM_DELIMITER)) {
             int idx1 = userInput.indexOf(START_CUSTOM_DELIMITER) + 2;
@@ -26,15 +23,28 @@ public class Delimiter {
             String customDelimiter = userInput.substring(idx1, idx2);
 
             //커스텀 구분자 "."이랑 숫자로 들어오면 안됨
-            if (customDelimiter.equals(".") || customDelimiter.matches(NUMBER_FORMAT)) {
-                throw new IllegalArgumentException();
-            }
+            validateCustomDelimiter(customDelimiter);
             delimiters.add(customDelimiter);
 
             return customDelimiter;
         }
 
         return null;
+    }
+
+    //커스텀 구분자 "."이랑 숫자로 들어오면 안됨
+    private static void validateCustomDelimiter(String customDelimiter) {
+        if (customDelimiter.equals(".") || customDelimiter.matches(NUMBER_FORMAT)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    //커스텀 구분자 입력구조가 틀린경우 예외
+    private static void validateInputFormat(String userInput) {
+        if ((userInput.startsWith(START_CUSTOM_DELIMITER) && !userInput.contains(END_CUSTOM_DELIMITER))
+        || (!userInput.startsWith(START_CUSTOM_DELIMITER) && userInput.contains(END_CUSTOM_DELIMITER))) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
