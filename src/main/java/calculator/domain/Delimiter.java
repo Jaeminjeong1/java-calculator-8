@@ -25,4 +25,17 @@ public class Delimiter {
         return null;
     }
 
+    private String splitFormat(List<String> delimiters) {
+        StringBuilder sb = new StringBuilder();
+
+        int idx = 0;
+        for (String delimiter : delimiters) {
+            if (idx == delimiters.size() - 1) {
+                sb.append(delimiter);
+            }
+            sb.append(delimiter).append("|");
+            idx++;
+        }
+        return sb.toString();
+    }
 }
