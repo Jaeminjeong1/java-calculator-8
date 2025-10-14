@@ -9,14 +9,26 @@ public class Delimiter {
 
     private static final String START_CUSTOM_DELIMITER = "//";
     private static final String END_CUSTOM_DELIMITER = "\\n";
+    private static final String NUMBER_FORMAT = "\\d+";
 
     public String findCustomDelimiter(String userInput) {
+
+        //커스텀 구분자 입력구조가 틀린경우 예외
+        if ((userInput.startsWith(START_CUSTOM_DELIMITER) && !userInput.contains(END_CUSTOM_DELIMITER))
+        || (!userInput.startsWith(START_CUSTOM_DELIMITER) && userInput.contains(END_CUSTOM_DELIMITER))) {
+            throw new IllegalArgumentException();
+        }
 
         if (userInput.startsWith(START_CUSTOM_DELIMITER) && userInput.contains(END_CUSTOM_DELIMITER)) {
             int idx1 = userInput.indexOf(START_CUSTOM_DELIMITER) + 2;
             int idx2 = userInput.lastIndexOf(END_CUSTOM_DELIMITER);
 
             String customDelimiter = userInput.substring(idx1, idx2);
+
+            //커스텀 구분자 "."이랑 숫자로 들어오면 안됨
+            if (customDelimiter.equals(".") || customDelimiter.matches(NUMBER_FORMAT)) {
+                throw new IllegalArgumentException();
+            }
             delimiters.add(customDelimiter);
 
             return customDelimiter;
@@ -25,7 +37,8 @@ public class Delimiter {
         return null;
     }
 
-    public List<String> splitString(String userInput, List<String> delimiters) {
+
+    public List<String> splitString(String userInput) {
         List<String> strings;
         String splitFormatString = splitFormat(delimiters);
 
@@ -40,6 +53,7 @@ public class Delimiter {
         return strings;
     }
 
+    //split 형식에 맞게 바꿈(".|:|customDelimiter")
     private String splitFormat(List<String> delimiters) {
         StringBuilder sb = new StringBuilder();
 
