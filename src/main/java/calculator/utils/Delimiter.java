@@ -70,7 +70,7 @@ public class Delimiter {
 
         int idx = 0;
         for (String delimiter : delimiters) {
-            if (idx < delimiters.size() - 1) {
+            if (idx == delimiters.size() - 1) {
                 sb.append(delimiter);
                 return sb.toString();
             }
