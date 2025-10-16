@@ -6,15 +6,16 @@ public class Calculator {
 
     private double result;
 
-    public double calculateNumber(List<String> numbers) {
+    public Object calculateNumber(List<String> numbers) {
         for (String number : numbers) {
             validateNum(number);
             result += Double.parseDouble(number);
         }
-        return result;
+
+        return determineType(result);
     }
 
-    public Object determineType(double number) {
+    private Object determineType(double number) {
         if (number % 1 == 0) {
             return (long) number;
         }

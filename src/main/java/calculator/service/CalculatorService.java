@@ -17,8 +17,7 @@ public class CalculatorService {
     }
 
     public Object calculateResult(List<String> strings) {
-        double tempResult = calculator.calculateNumber(strings);
-        Object result = calculator.determineType(tempResult);
+        Object result = calculator.calculateNumber(strings);
         return result;
     }
 }
