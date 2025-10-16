@@ -1,6 +1,5 @@
-package calculator;
+package calculator.utils;
 
-import calculator.utils.Delimiter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
