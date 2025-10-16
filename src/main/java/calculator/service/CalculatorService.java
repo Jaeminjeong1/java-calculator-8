@@ -1,7 +1,7 @@
 package calculator.service;
 
-import calculator.utils.Calculator;
-import calculator.utils.Delimiter;
+import calculator.domain.Calculator;
+import calculator.domain.Delimiter;
 
 import java.util.List;
 
