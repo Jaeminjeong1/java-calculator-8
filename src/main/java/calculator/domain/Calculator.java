@@ -7,6 +7,10 @@ public class Calculator {
     private double result;
 
     public Object calculateNumber(List<String> numbers) {
+        //빈 문자열 들어오면 0반환
+        if (numbers.contains("")) {
+            return 0L;
+        }
         for (String number : numbers) {
             validateNum(number);
             result += Double.parseDouble(number);
