@@ -13,6 +13,19 @@ public class CalculatorTest {
     Delimiter   delimiter = new Delimiter();
     Calculator calculator = new Calculator();
 
+    //빈값 입력됐을 경우 0반환
+    @Test
+    @DisplayName("빈 문자열 입력됐을 경우 0출력")
+    void empty_input() {
+        String input = "";
+
+        List<String> list = delimiter.splitString(input);
+        Object result = calculator.calculateNumber(list);
+
+        assertThat(result).isEqualTo(0L);
+
+    }
+
     //정수끼리 계산
     @Test
     @DisplayName("정수끼리의 계산결과는 정수")
